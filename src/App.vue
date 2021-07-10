@@ -12,7 +12,7 @@
       </div>
     </main>
     <footer>
-      <p>Made with <span>💜</span> by Chaitanya Raj</p>
+      <span>Made with 💜 by Chaitanya Raj</span>
     </footer>
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
     },
     copyName: function() {
       this.$clipboard(this.generatedName);
+      this.$toasted.show("Copied to clipboard");
     },
   },
 };
@@ -61,6 +62,17 @@ export default {
 body {
   margin: 0;
   padding: 0;
+}
+
+.toast {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  border-radius: 80px;
+  border-style: none;
+  background: var(--primary);
+  color: var(--secondary);
+  cursor: pointer;
+  box-shadow: 5px 5px 10px #272b3a, -5px -5px 10px #34394d;
 }
 
 #app {
