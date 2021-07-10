@@ -57,6 +57,19 @@ export default {
 
 * {
   box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+*:focus {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
 }
 
 body {
@@ -87,21 +100,25 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 60px; /* Height of the footer */
+  padding-bottom: 40px; /* Height of the footer */
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 h1 {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
   font-size: 4rem;
   font-weight: 900;
   word-wrap: normal;
+  animation: fade-in 2s ease-out;
   margin-bottom: 50px;
-  text-shadow: 5px 5px 10px #363636, -5px -5px 10px #424242;
+  text-shadow: 5px 5px 10px #272b3a, -2px -2px 10px #34394d;
 }
 
 main {
@@ -109,6 +126,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: fade-in 2s ease-out;
 }
 
 p {
@@ -125,7 +143,7 @@ p {
   color: var(--secondary);
   border-style: none;
   cursor: copy;
-  box-shadow: 5px 5px 10px #272b3a, -5px -5px 10px #34394d;
+  box-shadow: 5px 5px 10px #272b3a, -2px -2px 10px #34394d;
 }
 
 button {
@@ -139,23 +157,30 @@ button {
   background: var(--primary);
   color: var(--secondary);
   cursor: pointer;
-  box-shadow: 5px 5px 10px #272b3a, -5px -5px 10px #34394d;
+  box-shadow: 5px 5px 10px #272b3a, -2px -2px 10px #34394d;
 }
 
 p:active,
 button:active {
-  box-shadow: 5px 5px 3px #272b3a, -5px -5px 3px #34394d;
+  box-shadow: 2px 2px 10px #272b3a, -1px -1px 10px #34394d;
 }
 
 footer {
   font-family: "Caveat", cursive;
+  font-size: small;
+  animation: fade-in 2s ease-out;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60px; /* Height of the footer */
+  height: 40px; /* Height of the footer */
+  text-shadow: 2px 2px 5px #272b3a, -2px -2px 5px #34394d;
 }
 
 @media screen and (max-width: 768px) {
+  #app {
+    padding-bottom: 40px;
+  }
+
   h1 {
     font-size: 2.1rem;
   }
@@ -168,6 +193,10 @@ footer {
   button {
     min-width: 40vw;
     min-height: 7vh;
+  }
+
+  footer {
+    height: 40px;
   }
 }
 </style>
