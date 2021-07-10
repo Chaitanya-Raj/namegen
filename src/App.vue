@@ -5,10 +5,10 @@
     </header>
     <main>
       <div>
-        <input type="text" id="" disabled />
+        <p @click="copyName">{{ this.generatedName }}</p>
       </div>
       <div>
-        <button>Generate</button>
+        <button @click="fetchWords">Generate</button>
       </div>
     </main>
     <footer>
@@ -18,13 +18,35 @@
 </template>
 
 <script>
+import words from "./assets/words.json";
+
 export default {
   name: "App",
+  data() {
+    return {
+      allWords: words.words,
+      generatedName: "",
+    };
+  },
+  methods: {
+    fetchWords: function() {
+      this.generatedName = this.allWords
+        .slice(0, 2)
+        .map(function() {
+          return this.splice(Math.floor(Math.random() * this.length), 1)[0];
+        }, this.allWords.slice())
+        .join(" ");
+      console.log(this.generatedName);
+    },
+    copyName: function() {
+      this.$clipboard(this.generatedName);
+    },
+  },
 };
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
 
 :root {
@@ -57,6 +79,12 @@ body {
 }
 
 h1 {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 4rem;
   font-weight: 900;
   word-wrap: normal;
@@ -71,19 +99,26 @@ main {
   justify-content: center;
 }
 
-input {
+p {
   font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 70vw;
   min-height: 10vh;
   border-radius: 80px;
   background: var(--primary);
   color: var(--secondary);
   border-style: none;
+  cursor: copy;
   box-shadow: 5px 5px 10px #272b3a, -5px -5px 10px #34394d;
 }
 
 button {
   font-family: "Montserrat", sans-serif;
+  font-weight: 300;
   margin-top: 20px;
   min-width: 30vw;
   min-height: 7vh;
@@ -91,7 +126,13 @@ button {
   border-style: none;
   background: var(--primary);
   color: var(--secondary);
+  cursor: pointer;
   box-shadow: 5px 5px 10px #272b3a, -5px -5px 10px #34394d;
+}
+
+p:active,
+button:active {
+  box-shadow: 5px 5px 3px #272b3a, -5px -5px 3px #34394d;
 }
 
 footer {
@@ -107,7 +148,7 @@ footer {
     font-size: 2.1rem;
   }
 
-  input {
+  p {
     min-width: 80vw;
     min-height: 8vh;
   }
