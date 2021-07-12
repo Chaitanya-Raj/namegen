@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import Clipboard from "v-clipboard";
 import Toasted from "vue-toasted";
+import './registerServiceWorker'
 
 Vue.use(Toasted, {
   position: "top-center",
