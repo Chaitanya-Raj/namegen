@@ -47,8 +47,33 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Caveat&display=swap");
+@font-face {
+  font-family: "Caveat";
+  src: url("assets/Caveat-VariableFont_wght.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/Montserrat-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/Montserrat-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("assets/Montserrat-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
 
 :root {
   --primary: #2d3142;
